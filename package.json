@@ -1,0 +1,19 @@
+{
+  "name": "botku-babi",
+  "version": "1.0.0",
+  "description": "koleksi botku",
+  "main": "frenpet_v2.js",
+  "scripts": {
+    "test": "node frenpet_v2.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrFatoni/Botku-Babi.git"
+  },
+  "author": "MrF",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrFatoni/Botku-Babi/issues"
+  },
+  "homepage": "https://github.com/MrFatoni/Botku-Babi#readme"
+}

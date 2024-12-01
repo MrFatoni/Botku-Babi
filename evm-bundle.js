@@ -80,7 +80,7 @@ const functionData = encodeFunctionData({
     to: "0x0000000000000000000000000000000000000000",
     value: parseEther(`0`),
     gasPrice: parseGwei('1'),
-    gasLimit: 300000,
+    gas: 25000n,
    // data: functionData
   })
    
@@ -92,7 +92,7 @@ const functionData = encodeFunctionData({
     to: "0x0000000000000000000000000000000000000001",
     value: parseEther(`0`),
     gasPrice: parseGwei('1'),
-    gasLimit: 300000,
+    gas: 25000n,
     nonce: nonce+1,
     data: '0x1337'
   })

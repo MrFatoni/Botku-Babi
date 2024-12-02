@@ -24,7 +24,7 @@ function sign48(privateKeyHex, txHashes) {
 
   const wallet = new ethers.utils.SigningKey(privateKeyHex);
   let signature = wallet.signDigest(combinedHash);
-  signature = ethers.utils.joinSignature(signature).slice(0, -2) + '01';
+  signature = ethers.utils.joinSignature(signature).slice(0, -2) + '0'+signature.recoveryParam;
 
   return signature;
 }
@@ -126,3 +126,4 @@ let request_bundle = await fetch(
   );
   request_bundle = await request_bundle.json();
   console.log(request_bundle)
+  console.log("https://explore.48.club/v2/bundle?hash="+request_bundle.result) 

@@ -3,7 +3,7 @@ const wsUrl = `wss://nbstream.binance.info/w3w/stream`;
 const ws = new WebSocket(wsUrl);
 
 // CODED BY GEMINI AI
-// Change USD line 56
+const amount_buy = 1000; // USD
 // for i in {1..20}; do bun binance-alpha-push.js; sleep 10m; done
 const headers = {} //sniff https://www.binance.info/id/alpha/bsc/0xc71b5f631354be6853efe9c3ab6b9590f8302e81
 
@@ -54,7 +54,7 @@ ws.on('open', () => {
     if (message.data) {
       
 const current_price = message.data.k.c;
-const amount_buy = 1000; // USD
+//const amount_buy = 1000; // USD
 const buy_price = current_price * 1.01; // 1% above current price
 const sell_price = current_price * 0.997; // 0.3% below current price
 
@@ -131,11 +131,11 @@ const data_beli = JSON.stringify({
       console.log('DONE SAY');
 
      
+
 let counter = Bun.file('count.txt');
 counter = await counter.text()
-await Bun.write("count.txt", Number(counter)+1);
-
-      console.log(`Ini Run ke #${counter}`);
+await Bun.write("count.txt", Number(counter)+amount_buy);
+console.log(`Volume: ${Number(counter)+amount_buy} USD`);
       process.exit(0);
       
     }

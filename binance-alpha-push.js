@@ -132,10 +132,26 @@ const data_beli = JSON.stringify({
 
      
 
-let counter = Bun.file('count.txt');
-counter = await counter.text()
-await Bun.write("count.txt", Number(counter)+amount_buy);
-console.log(`Volume: ${Number(counter)+amount_buy} USD`);
+// START LOG
+const currentDate = new Date().toISOString().split('T')[0];
+const filePath = `logs-swap/${currentDate}.txt`;
+
+// Try to read existing file, default to "0" if file doesn't exist
+let counterText;
+try {
+  counterText = await Bun.file(filePath).text();
+} catch (error) {
+  counterText = "0";
+}
+
+const currentValue = Number(counterText);
+const amountBuy = Number(amount_buy);
+const newValue = currentValue + amountBuy;
+
+await Bun.write(filePath, newValue.toString());
+console.log(`Volume ${currentDate}: ${newValue} USD`);
+console.log(`Total double ${newValue*2} USD or ${Math.floor(Math.log2(newValue*2))} point`);
+// END LOG
       process.exit(0);
       
     }
